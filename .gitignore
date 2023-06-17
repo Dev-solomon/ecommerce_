@@ -1,1 +1,6 @@
 /.venv
+
+# install virtual environment by the following:
+# python -m venv .venv
+# enter the virtual env with :: source .venv/Scripts/activate
+# and to go out of it is :: deactivate
