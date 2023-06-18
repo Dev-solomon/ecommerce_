@@ -17,67 +17,67 @@ def checkout_template():
     return render_template('checkout.html')
 # Order section for customers making order
 @app.route('/order')
-def home_template():
+def order_template():
     return render_template('order.html')
 # Login and Sign up Page
 @app.route('/login')
-def cart_template():
+def login_template():
     return render_template('login.html')
 # Contact of the Website
 @app.route('/contact')
-def cart_template():
+def contact_template():
     return render_template('contact-us.html')
 # Questions and Answers for Product usage
 @app.route('/faq')
-def cart_template():
+def faq_template():
     return render_template('faq.html')
 # To display  a list of vendors
 @app.route('/vendors-list')
-def cart_template():
+def vendorslist_template():
     return render_template('vendor-dokan-store-list.html')
 # Your like items on the catalog
 @app.route('/favourite')
-def cart_template():
+def favourite_template():
     return render_template('wishlist.html')
 # The list of vendors in grid style
 @app.route('/vendors-grid')
-def cart_template():
+def vendorsgrid_template():
     return render_template('vendor-dokan-store-grid.html')
 # Comparison of different products on the store of a vendor
 @app.route('/compare-products')
-def cart_template():
+def compare_template():
     return render_template('compare.html')
 #  The about us page
 @app.route('/about')
-def cart_template():
+def about_template():
     return render_template('about-us.html')
 # Your account login of the seller or vendor
 @app.route('/account')
-def cart_template():
+def account_template():
     return render_template('my-account.html')
 # A singlr post description of a blog
 @app.route('/post')
-def cart_template():
+def post_template():
     return render_template('post-single.html')
 # This is the viewing of oreder for the vendor to see all the items he has sold 
 @app.route('/orderView')
-def cart_template():
+def orderView_template():
     return render_template('order-view.html')
 # This is the complete list of all the items in the catalog of the website
 @app.route('/catalog')
-def cart_template():
+def catalog_template():
     return render_template('shop-horizontal-filter.html')
 # The signup page for anyone that wants to become a vendor
 @app.route('/vendors-sign')
-def cart_template():
+def vendorSign_template():
     return render_template('become-a-vendor.html')
 # The ovverview of a particular product
 @app.route('/product')
-def cart_template():
+def product_template():
     return render_template('product-variable.html')
 # a single vendor overview
 @app.route('/vendor')
-def cart_template():
+def vendor_template():
     return render_template('vendor-dokan-store.html')
 
 
