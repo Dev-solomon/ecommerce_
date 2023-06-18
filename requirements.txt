@@ -3,4 +3,5 @@ Flask==2.0.3
 # So flask can read environment variables like FLASK_APP="src.app"
 python-dotenv==0.19.2
 gunicorn
-Flask-SQLAlchemy
+sqlalchemy
+pymysql
