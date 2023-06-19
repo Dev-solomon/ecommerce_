@@ -28,7 +28,7 @@ def login_template():
 def contact_template():
     return render_template('contact-us.html')
 # Questions and Answers for Product usage
-@app.route('/faq')
+@app.route('/faqs')
 def faq_template():
     return render_template('faq.html')
 # To display  a list of vendors

@@ -628,8 +628,8 @@ table {
   width: 3.6rem;
   height: 3.6rem;
   color: #fff;
-  background-color: #333;
-  border: 2px solid #333;
+  background-color: black;
+  border: 2px solid lightseagreen;
   border-radius: 50%;
   z-index: 1;
 }
@@ -645,7 +645,7 @@ table {
 }
 
 #scroll-top svg circle {
-  stroke: #2C67E7;
+  stroke: black;
   stroke-width: 4px;
   stroke-linecap: round;
   stroke-dasharray: 1, 400;
@@ -8384,7 +8384,7 @@ textarea {
 }
 .ratings::before {
   content: "" "" "" "" "";
-  color: #FF7272;
+  color: gold;
 }
 
 .rating-reviews {
@@ -9639,7 +9639,7 @@ body .product-popup {
   color: rgba(0, 0, 0, 0.2);
 }
 .product-single .ratings::before {
-  color: #ffb639;
+  color: gold;
 }
 .product-single .ratings-full, .product-single .ratings {
   letter-spacing: 0.18em;
@@ -14524,14 +14524,6 @@ body .product-popup {
   line-height: 1.1;
   padding: 11px 0;
 }
-.dropdown > a::after {
-  display: inline-block;
-  margin-left: 6px;
-  content: "";
-  font-family: "Font Awesome 5 Free";
-  font-size: 8px;
-  font-weight: 900;
-}
 .dropdown li.active > a, .dropdown li:hover > a {
   color: lightseagreen;
 }
@@ -14819,12 +14811,6 @@ body .product-popup {
       -ms-flex: 1;
           flex: 1;
   margin-left: 0.7rem;
-}
-.category-dropdown > a::after {
-  font-family: "wolmart";
-  content: "";
-  font-weight: 600;
-  font-size: 0.9rem;
 }
 .category-dropdown > a:not(.btn):hover {
   color: #fff;
