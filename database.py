@@ -13,4 +13,4 @@ connection = MySQLdb.connect(
   ssl      = {
     "ca": "/etc/ssl/cert.pem"
   }
-)
+)engine = create_engine("mysql+pymysql://user:pass@some_mariadb/dbname?charset=utf8mb4")
