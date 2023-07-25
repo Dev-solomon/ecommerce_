@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, session, make_response
+from flask import Flask, render_template, request, session, make_response, jsonify
+from database import registration, login_user 
 
 app = Flask(__name__)  # '__main__'
 app.secret_key = "solomon"
@@ -20,8 +21,20 @@ def checkout_template():
 def order_template():
     return render_template('order.html')
 # Login and Sign up Page
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login_template():
+    if request.method == 'POST':
+        data = request.form
+        return login_user(data) 
+    else:
+        return render_template('login.html')
+    
+# ----------------------------------------
+@app.route('/register', methods=['POST'])
+def reg_template():
+    data = request.form
+    registration(data)
+    print("Data has been successfully registered")
     return render_template('login.html')
 # Contact of the Website
 @app.route('/contact')

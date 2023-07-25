@@ -9481,6 +9481,7 @@ body .product-popup {
   display: block;
   padding-top: 0.79em;
   padding-bottom: 0.79em;
+  float: right;
 }
 .login-popup p {
   margin-bottom: 1.9rem;
