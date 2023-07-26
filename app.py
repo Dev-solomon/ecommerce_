@@ -1,8 +1,15 @@
-from flask import Flask, render_template, request, session, make_response, jsonify
-from database import registration, login_user 
+from flask import *
+from database import registration, login_user, save_user_settings, update_user_password
+from funcs import token_required, set_cookies, user_account, del_cookies
+import jwt
+import datetime 
+import os
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)  # '__main__'
-app.secret_key = "solomon"
+app.config['SECRET_KEY'] = "solomon"
+CORS(app, support_credentials=True)
+
 
 # The HomePage
 @app.route('/')
@@ -18,6 +25,7 @@ def checkout_template():
     return render_template('checkout.html')
 # Order section for customers making order
 @app.route('/order')
+@token_required
 def order_template():
     return render_template('order.html')
 # Login and Sign up Page
@@ -25,24 +33,26 @@ def order_template():
 def login_template():
     if request.method == 'POST':
         data = request.form
-        return login_user(data) 
+        if login_user(data) == data['email']:
+            user = data['email']
+            token = jwt.encode({'user': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, os.getenv('SECRET_KEY'))
+            return set_cookies(token) 
+        return  render_template('login.html', message="Email Or Password Incorrect")
     else:
-        return render_template('login.html')
-    
+        return render_template('login.html')   
 # ----------------------------------------
 @app.route('/register', methods=['POST'])
 def reg_template():
     data = request.form
-    registration(data)
-    print("Data has been successfully registered")
-    return render_template('login.html')
+    registration(data) 
+    return render_template('login.html', reg_message="Registered Successfully!")
 # Contact of the Website
 @app.route('/contact')
 def contact_template():
     return render_template('contact-us.html')
 # Questions and Answers for Product usage
 @app.route('/faqs')
-def faq_template():
+def faq_template(): 
     return render_template('faq.html')
 # To display  a list of vendors
 @app.route('/vendors-list')
@@ -66,8 +76,10 @@ def about_template():
     return render_template('about-us.html')
 # Your account login of the seller or vendor
 @app.route('/account')
+@token_required
 def account_template():
-    return render_template('my-account.html')
+    active_user = user_account()['user'] 
+    return render_template('my-account.html', username=active_user)
 # A singlr post description of a blog
 @app.route('/post')
 def post_template():
@@ -92,6 +104,25 @@ def product_template():
 @app.route('/vendor')
 def vendor_template():
     return render_template('vendor-dokan-store.html')
+# For account settings on user dashboard
+@app.route('/account_settings', methods=['POST']) 
+def account_details():
+    data = request.form
+    return save_user_settings(data)
+# For User's account password
+@app.route('/account_password', methods=['POST']) 
+def account_password():
+    data = request.form
+    
+    if data['new_password'] != data['conf_password']:
+        return render_template('my-account.html', pass_message="Passwords Doesn't Match")
+    return update_user_password(data)
+# Logout user from session
+@app.route('/logout')
+def logout_user():
+    return del_cookies()
+     
+        
 
 
 

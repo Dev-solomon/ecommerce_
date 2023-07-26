@@ -48,10 +48,18 @@
         <!-- Start of Header -->
            <!-- Start of Main -->
         <main class="main login-page">
+
+            
            
             <!-- End of Breadcrumb -->
             <div class="page-content">
                 <div class="container">
+                    {% if message is defined %}
+                    <h1 class="text-center"><button class="btn" style="background-color: red; border: none ;color: white;">{{message}}</button></h1>
+                    {% endif %}
+                    {% if reg_message is defined %}
+                    <h1 class="text-center"><button class="btn" style="background-color: green; border: none ;color: white;">{{reg_message}}</button></h1>
+                    {% endif %}
                     <div class="login-popup">
                         <div class="tab tab-nav-boxed tab-nav-center tab-nav-underline">
                             <ul class="nav nav-tabs text-uppercase" role="tablist">
@@ -75,7 +83,7 @@
                                         <input type="text" class="form-control" name="password" id="password" required="">
                                     </div>
                                     <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                        <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1" required="">
+                                        <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1">
                                         <label for="remember1">Remember me</label>
                                         <a href="#">Last your password?</a>
                                     </div>
