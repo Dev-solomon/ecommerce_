@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, text   
 from flask import *
+from datetime import date
 
 # ----------------------------------------------------------
 # Connection string For Cloud connection to Database
@@ -67,3 +68,29 @@ def update_user_password(data):
       return render_template('my-account.html', pass_message="Password Updated Successfully")
     except:
       print('nothing done to the database')
+      # --------------------------------------------------------------
+# This is the function to  create new products
+# --------------------------------------------------------------
+def create_new_product(data):
+  with engine.connect() as conn:
+    query = text("INSERT INTO products (title, title_tag, desc, category, image, m_name, m_brand, stock, price, discount, orders, date, status) VALUES (:title, :title_tag, :desc, :category, :image, :m_name, :m_brand, :stock, :price, :discount, :orders, :date, :status)")
+
+    result = conn.execute(query, 
+                dict(title = data['title'],
+                     title_tag = data['title_tag'],
+                     desc = data['description'],
+                     category = data['category'],
+                     image = data['image'],
+                     m_name = data['m_name'],
+                     m_brand = data['m_brand'],
+                     stock = data['stock'],
+                     price = data['price'],
+                     discount = data['discount'],
+                     orders = data['orders'],
+                     date = date.today(),
+                     status = data['status']
+                     )
+                ) 
+    if result.rowcount == 0:
+      return False
+    return True

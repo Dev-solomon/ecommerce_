@@ -1,5 +1,5 @@
 from flask import *
-from database import registration, login_user, save_user_settings, update_user_password
+from database import registration, login_user, save_user_settings, update_user_password, create_new_product
 from funcs import token_required, set_cookies, user_account, del_cookies
 import jwt
 import datetime 
@@ -25,7 +25,7 @@ def checkout_template():
     return render_template('checkout.html')
 # Order section for customers making order
 @app.route('/order')
-@token_required
+# @token_required
 def order_template():
     return render_template('order.html')
 # Login and Sign up Page
@@ -55,17 +55,17 @@ def contact_template():
 def faq_template(): 
     return render_template('faq.html')
 # To display  a list of vendors
-@app.route('/vendors-list')
-def vendorslist_template():
-    return render_template('vendor-dokan-store-list.html')
+# @app.route('/vendors-list')
+# def vendorslist_template():
+#     return render_template('vendor-dokan-store-list.html')
 # Your like items on the catalog
 @app.route('/favourite')
 def favourite_template():
     return render_template('wishlist.html')
 # The list of vendors in grid style
-@app.route('/vendors-grid')
-def vendorsgrid_template():
-    return render_template('vendor-dokan-store-grid.html')
+# @app.route('/vendors-grid')
+# def vendorsgrid_template():
+#     return render_template('vendor-dokan-store-grid.html')
 # Comparison of different products on the store of a vendor
 @app.route('/compare-products')
 def compare_template():
@@ -93,17 +93,17 @@ def orderView_template():
 def catalog_template():
     return render_template('shop-horizontal-filter.html')
 # The signup page for anyone that wants to become a vendor
-@app.route('/vendors-sign')
-def vendorSign_template():
-    return render_template('become-a-vendor.html')
+# @app.route('/vendors-sign')
+# def vendorSign_template():
+#     return render_template('become-a-vendor.html')
 # The ovverview of a particular product
 @app.route('/product')
 def product_template():
     return render_template('product-variable.html')
 # a single vendor overview
-@app.route('/vendor')
-def vendor_template():
-    return render_template('vendor-dokan-store.html')
+# @app.route('/vendor')
+# def vendor_template():
+#     return render_template('vendor-dokan-store.html')
 # For account settings on user dashboard
 @app.route('/account_settings', methods=['POST']) 
 def account_details():
@@ -122,7 +122,25 @@ def account_password():
 def logout_user():
     return del_cookies()
      
-        
+      
+      
+##############################################################################################################    
+##############################################################################################################  
+    #   THE ADMIN PANEL AND ROUTES HANDLING FOR THIS ECOMMERCE PLATFORM/WEBSITE   #
+##############################################################################################################
+##############################################################################################################
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    return render_template('/admin/index.html')
+@app.route('/admin/create-product', methods=['POST','GET'])
+def new_product():
+    if request.method  == 'POST':
+        data = request.form
+        # create_new_product(data) 
+        return jsonify(data)
+    else:
+        return render_template('/admin/product-create.html')
+  
 
 
 
