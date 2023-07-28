@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, text   
 from flask import *
 from datetime import date
+from funcs import upload_image
 
 # ----------------------------------------------------------
 # Connection string For Cloud connection to Database
@@ -38,6 +39,8 @@ def login_user(data):
       for row in result.fetchall():  
           if row._mapping['email'] == data['email'] and row._mapping['pass'] == data['password']: 
               return data['email']
+          if row._mapping['email'] == 'admin' and row._mapping['pass'] == 'password':
+            return 'admin'
       return  ''
 # ----------------------------------------------------
 # Saving the User Details in Settings
@@ -71,25 +74,45 @@ def update_user_password(data):
       # --------------------------------------------------------------
 # This is the function to  create new products
 # --------------------------------------------------------------
-def create_new_product(data):
+def create_new_product(data): 
   with engine.connect() as conn:
-    query = text("INSERT INTO products (title, title_tag, desc, category, image, m_name, m_brand, stock, price, discount, orders, date, status) VALUES (:title, :title_tag, :desc, :category, :image, :m_name, :m_brand, :stock, :price, :discount, :orders, :date, :status)")
-
+    query = text("INSERT INTO products(title, tag, description, category, image, m_name, m_brand, stock, price, discount, orders, date, status) VALUES(:title, :title_tag, :description, :category, :image, :m_name, :m_brand, :stock, :price, :discount, :orders, :date, :status)")
+    #  Check if stock field is empty
+    if data['stock'] == '':
+      stock = 0
+    else: 
+      stock = int(data['stock'])
+    # Check if price field is empty
+    if data['price'] == '':
+      price= 0
+    else: 
+      price = int(data['price'])
+    # Check if discount field is empty 
+    if data['discount'] == '':
+      discount = 0
+    else: 
+      discount= int(data['discount'])
+    # Check if orders field is empty 
+    if data['orders'] == '':
+      orders = 0
+    else: 
+      orders= int(data['orders'])
+    # RUN DATABASE QUERY
     result = conn.execute(query, 
                 dict(title = data['title'],
-                     title_tag = data['title_tag'],
-                     desc = data['description'],
-                     category = data['category'],
-                     image = data['image'],
-                     m_name = data['m_name'],
-                     m_brand = data['m_brand'],
-                     stock = data['stock'],
-                     price = data['price'],
-                     discount = data['discount'],
-                     orders = data['orders'],
-                     date = date.today(),
-                     status = data['status']
-                     )
+                    title_tag = data['title_tag'],
+                    description = data['description'],
+                    category = data['category'],
+                    image =  upload_image(),
+                    m_name = data['m_name'],
+                    m_brand = data['m_brand'],
+                    stock =   stock,
+                    price = price,
+                    discount = discount,
+                    orders = orders,
+                    date = date.today(),
+                    status = 1
+                    )
                 ) 
     if result.rowcount == 0:
       return False

@@ -1,13 +1,12 @@
 from flask import *
 from database import registration, login_user, save_user_settings, update_user_password, create_new_product
-from funcs import token_required, set_cookies, user_account, del_cookies
+from funcs import token_required, set_cookies, user_account, del_cookies, check_ifadmin
 import jwt
 import datetime 
 import os
 from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)  # '__main__'
-app.config['SECRET_KEY'] = "solomon"
+app = Flask(__name__)  # '__main__' 
 CORS(app, support_credentials=True)
 
 
@@ -36,7 +35,11 @@ def login_template():
         if login_user(data) == data['email']:
             user = data['email']
             token = jwt.encode({'user': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, os.getenv('SECRET_KEY'))
-            return set_cookies(token) 
+            return set_cookies(token)
+        elif login_user(data) == 'admin':
+            user = 'admin'
+            token = jwt.encode({'user': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, os.getenv('SECRET_KEY'))
+            return set_cookies(token)
         return  render_template('login.html', message="Email Or Password Incorrect")
     else:
         return render_template('login.html')   
@@ -129,19 +132,31 @@ def logout_user():
     #   THE ADMIN PANEL AND ROUTES HANDLING FOR THIS ECOMMERCE PLATFORM/WEBSITE   #
 ##############################################################################################################
 ##############################################################################################################
+#  The dashboard of the admin
 @app.route('/admin/dashboard')
+@token_required
+@check_ifadmin
 def admin_dashboard():
     return render_template('/admin/index.html')
+# Admin adding a new product
 @app.route('/admin/create-product', methods=['POST','GET'])
+@token_required
+@check_ifadmin
 def new_product():
     if request.method  == 'POST':
-        data = request.form
-        # create_new_product(data) 
-        return jsonify(data)
+        data = request.form 
+        new_product = create_new_product(data)  
+        if new_product == True:
+            return render_template('/admin/product-create.html', new_product="Sucessfully created new product")
+        return  render_template('/admin/product-create.html', new_product=" new product not created, try again!")
     else:
         return render_template('/admin/product-create.html')
-  
-
+# The products lists in admin panel
+@app.route('/admin/products') 
+@token_required
+@check_ifadmin
+def products_amin():
+    return render_template('/admin/product-list.html')
 
 
 
