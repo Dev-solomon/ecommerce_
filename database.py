@@ -71,7 +71,7 @@ def update_user_password(data):
       return render_template('my-account.html', pass_message="Password Updated Successfully")
     except:
       print('nothing done to the database')
-      # --------------------------------------------------------------
+# --------------------------------------------------------------
 # This is the function to  create new products
 # --------------------------------------------------------------
 def create_new_product(data): 
@@ -117,3 +117,18 @@ def create_new_product(data):
     if result.rowcount == 0:
       return False
     return True
+# ------------------------------------------
+# Get the products from database
+# ------------------------------------------
+def get_products():
+  with engine.connect() as conn:
+    query = text("SELECT * FROM products")
+    
+    get_products = conn.execute(query)
+    
+    if get_products.rowcount == 0:
+      print('nothing in database')
+      
+    products = get_products.fetchall()
+    
+    return products 

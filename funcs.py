@@ -75,7 +75,7 @@ def check_ifadmin(f):
        data = jwt.decode(token, os.getenv('SECRET_KEY'), algorithms=["HS256"]) 
        
        if data['user'] != 'admin':
-         return render_template('admin/auth-404.html', message="ACCESS DENIED!")
+        return render_template('admin/auth-404.html', message="ACCESS DENIED!")
     
     return f(*args, **kwargs)  
   

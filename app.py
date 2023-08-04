@@ -1,5 +1,5 @@
 from flask import *
-from database import registration, login_user, save_user_settings, update_user_password, create_new_product
+from database import registration, login_user, save_user_settings, update_user_password, create_new_product, get_products
 from funcs import token_required, set_cookies, user_account, del_cookies, check_ifadmin
 import jwt
 import datetime 
@@ -155,8 +155,10 @@ def new_product():
 @app.route('/admin/products') 
 @token_required
 @check_ifadmin
-def products_amin():
-    return render_template('/admin/product-list.html')
+def products_amin(): 
+    # get the array of the products from database
+    products = get_products()
+    return render_template('/admin/product-list.html', products=products)
 
 
 
