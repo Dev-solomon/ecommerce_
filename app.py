@@ -1,6 +1,6 @@
 from flask import *
-from database import registration, login_user, save_user_settings, update_user_password, create_new_product, get_products
-from funcs import token_required, set_cookies, user_account, del_cookies, check_ifadmin
+from database import *
+from funcs import *
 import jwt
 import datetime 
 import os
@@ -137,7 +137,9 @@ def logout_user():
 @token_required
 @check_ifadmin
 def admin_dashboard():
-    return render_template('/admin/index.html')
+    products = product_total() # Total Products Listed
+    customers_Total = customers_total() # Total customers registered
+    return render_template('/admin/index.html', products=products, customers=customers_Total)
 # Admin adding a new product
 @app.route('/admin/create-product', methods=['POST','GET'])
 @token_required
@@ -155,10 +157,23 @@ def new_product():
 @app.route('/admin/products') 
 @token_required
 @check_ifadmin
-def products_amin(): 
+def products_admin(): 
+    total = product_total()
     # get the array of the products from database
     products = get_products()
-    return render_template('/admin/product-list.html', products=products)
+    return render_template('/admin/product-list.html', products=products, total=total)
+# This is the route for Checking Orders Made
+@app.route('/admin/orders')
+@token_required
+@check_ifadmin
+def orders_made():
+    return render_template('/admin/orders-list-view.html')
+# This is the route for Checking Orders Overview
+@app.route('/admin/orders-overview')
+@token_required
+@check_ifadmin
+def orders_overview():
+    return render_template('/admin/orders-overview.html')
 
 
 

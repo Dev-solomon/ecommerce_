@@ -130,5 +130,36 @@ def get_products():
       print('nothing in database')
       
     products = get_products.fetchall()
+     
+    print(products)
     
     return products 
+# ------------------------------------------
+# Get the products-total from database
+# ------------------------------------------
+def product_total():
+  with engine.connect() as conn:
+    query = text("SELECT  COUNT(*) FROM products")
+    
+    get_products = conn.execute(query)
+    
+    if get_products.rowcount == 0:
+      print('nothing in database')
+      
+    products = get_products.fetchone()[0] 
+    return products 
+# ------------------------------------------
+# Total Customers Recorded
+# ------------------------------------------
+def customers_total():
+  with engine.connect() as conn:
+    query = text(" SELECT COUNT(*) FROM registration")
+    
+    customers = conn.execute(query)
+    if customers.rowcount == 0:
+      return 0
+    
+    customers_Total = customers.fetchone()[0] 
+    return customers_Total
+  
+customers_total()
