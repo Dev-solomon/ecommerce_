@@ -160,6 +160,6 @@ def customers_total():
       return 0
     
     customers_Total = customers.fetchone()[0] 
+    print(customers_Total)
     return customers_Total
-  
-customers_total()
+   
