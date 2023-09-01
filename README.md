@@ -4,3 +4,4 @@ This Flask Application is the development of backend application(marketplace/eco
 tools and modules.
 
 The above makes use of a cloud database storage at https://planetscale.com
+The name of the database for this project is "jedidiah"

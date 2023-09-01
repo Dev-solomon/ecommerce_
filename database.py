@@ -33,15 +33,15 @@ def registration(data):
 # -----------------------------------------
 def login_user(data):
   with engine.connect() as conn:
-      result = conn.execute(text("select * from registration"))
-      
-      # users = []
-      for row in result.fetchall():  
-          if row._mapping['email'] == data['email'] and row._mapping['pass'] == data['password']: 
-              return data['email']
-          if row._mapping['email'] == 'admin' and row._mapping['pass'] == 'password':
-            return 'admin'
-      return  ''
+    result = conn.execute(text("select * from registration"))
+    
+    # users = []
+    for row in result.fetchall():  
+        if row._mapping['email'] == data['email'] and row._mapping['pass'] == data['password']: 
+          return data['email']
+        if row._mapping['email'] == data['email'] and row._mapping['pass'] == data['password']:
+          return 'admin'
+    return 'No!'
 # ----------------------------------------------------
 # Saving the User Details in Settings
 # ----------------------------------------------------

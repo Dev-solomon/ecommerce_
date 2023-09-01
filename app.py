@@ -43,7 +43,7 @@ def login_template():
         return  render_template('login.html', message="Email Or Password Incorrect")
     else:
         return render_template('login.html')   
-# ----------------------------------------
+# ---------------------------------------- 
 @app.route('/register', methods=['POST'])
 def reg_template():
     data = request.form
