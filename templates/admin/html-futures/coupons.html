@@ -1,17 +1,18 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-body-image="none">
 
     <head>
 
         <meta charset="utf-8">
-        <title>Product Overview | Toner eCommerce + Admin HTML Template</title>
+        <title>Coupons | Toner eCommerce + Admin HTML Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="eCommerce + Admin HTML Template" name="description">
         <meta content="Themesbrand" name="author">
         <!-- App favicon -->
         <link rel="shortcut icon" href="../../static/assets_admin/images/favicon.ico">
 
-        <link href="/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+        <!-- Sweet Alert css-->
+    <link href="../../static/assets_admin/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
         <!-- Layout config Js -->
         <script src="../../static/assets_admin/js/layout.js"></script>
@@ -235,7 +236,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div data-simplebar style="max-height: 300px;">
+                                    <div data-simplebar="" style="max-height: 300px;">
                                         <div class="p-2">
                                             <div class="text-center empty-cart" id="empty-cart">
                                                 <div class="avatar-md mx-auto my-3">
@@ -383,7 +384,7 @@
                             </div>
 
                             <div class="dropdown topbar-head-dropdown ms-1 header-item dropdown-hover-end" id="notificationDropdown">
-                                <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown"  data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                                     <i class='bi bi-bell fs-18'></i>
                                     <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger"><span class="notification-badge">4</span><span class="visually-hidden">unread messages</span></span>
                                 </button>
@@ -410,7 +411,7 @@
                                     </div>
 
                                     <div class="py-2 ps-2" id="notificationItemsTabContent">
-                                        <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                        <div data-simplebar="" style="max-height: 300px;" class="pe-2">
                                             <h6 class="text-overflow text-muted fs-13 my-2 text-uppercase notification-title">New</h6>
                                             <div class="text-reset notification-item d-block dropdown-item position-relative unread-message">
                                                 <div class="d-flex">
@@ -588,7 +589,7 @@
                                 </div>
                             </div>
 
-                            <div data-simplebar style="max-height: 300px;" class="pe-2 ps-3 mt-3">
+                            <div data-simplebar="" style="max-height: 300px;" class="pe-2 ps-3 mt-3">
                                 <div class="list-group list-group-flush border-dashed">
                                     <div class="notification-group-list">
                                         <h5 class="text-overflow text-muted fs-13 mb-2 mt-3 text-uppercase notification-title">Apps Pages</h5>
@@ -951,12 +952,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Overview</h4>
+                                    <h4 class="mb-sm-0">Coupons</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Product</a></li>
-                                            <li class="breadcrumb-item active">Overview</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Toner</a></li>
+                                            <li class="breadcrumb-item active">Coupons</li>
                                         </ol>
                                     </div>
 
@@ -964,608 +965,98 @@
                             </div>
                         </div>
                         <!-- end page title -->
-
-
-                        <div class="row gx-lg-4">
-                            <div class="col-xl-4 col-lg-8 mx-auto">
-                                <div class="row sticky-side-div">
-                                    <div class="col-lg-12">
-                                        <div class="alert alert-success text-center">
-                                            Deals Of The Week
-                                        </div>
+                        <div id="couponsList">
+                        <div class="row">
+                            <div class="col-xxl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-xxl-3 col-md-5">
+                                                <div class="search-box mb-3 mb-md-0">
+                                                    <input type="text" class="form-control search" id="searchProductList" placeholder="Search by coupons code & name...">
+                                                    <i class="ri-search-line search-icon"></i>
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-md-auto ms-auto">
+                                                <button data-bs-target="#showModal" data-bs-toggle="modal" class="btn btn-success add-btn"><i class="bi bi-plus-circle me-1 align-middle"></i>Add Coupon</button>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
                                     </div>
-                                    <div class="col-lg-2">
-                                        <div thumbsSlider class="swiper productSwiper productswiper-2 mb-3 mb-lg-0">
-                                            <div class="swiper-wrapper product-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div class="product-thumb rounded cursor-pointer">
-                                                        <img src="/assets/images/products/img-31.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="product-thumb rounded cursor-pointer">
-                                                        <img src="/assets/images/products/img-32.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="product-thumb rounded cursor-pointer">
-                                                        <img src="/assets/images/products/img-33.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="product-thumb rounded cursor-pointer">
-                                                        <img src="/assets/images/products/img-34.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="product-thumb rounded cursor-pointer">
-                                                        <img src="/assets/images/products/img-32.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
+                                </div><!--end card-->
+                            </div><!--end col-->
+                        </div><!--end row-->
 
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="col-lg-10">
-                                        <div class="bg-light rounded-2 position-relative ribbon-box overflow-hidden">
-                                            <div class="swiper productSwiper2">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <img src="/assets/images/products/img-31.png" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <img src="/assets/images/products/img-32.png" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <img src="/assets/images/products/img-33.png" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <img src="/assets/images/products/img-34.png" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <img src="/assets/images/products/img-32.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-button-next bg-transparent"></div>
-                                                <div class="swiper-button-prev bg-transparent"></div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-
-                            <div class="col-xl-8">
-                                <div class="mt-5 mt-xl-0">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <h4>Full Sleeve shirt for Men (Blue)</h4>
-                                            <div class="hstack gap-3 flex-wrap">
-                                                <div><a href="#" class="text-primary d-block">Tony jon</a></div>
-                                                <div class="vr"></div>
-                                                <div class="text-muted">Seller : <span class="text-body fw-medium">Zibra Fashion</span></div>
-                                                <div class="vr"></div>
-                                                <div class="text-muted">Published : <span class="text-body fw-medium">25 Jan, 2023</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-shrink-0">
-                                            <a href="product-create.html" class="btn btn-soft-secondary btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
-                                        <div class="text-muted fs-16">
-                                            <span class="mdi mdi-star text-warning"></span>
-                                            <span class="mdi mdi-star text-warning"></span>
-                                            <span class="mdi mdi-star text-warning"></span>
-                                            <span class="mdi mdi-star text-warning"></span>
-                                            <span class="mdi mdi-star text-warning"></span>
-                                        </div>
-                                        <div class="text-muted">( 50 Review )</div>
-                                    </div>
-
-                                    <div class="row mt-4">
-                                        <div class="col-lg-3 col-sm-6 g-3">
-                                            <div class="p-2 border border-dashed rounded text-center">
-                                                <p class="mb-2 text-uppercase text-muted fs-13">Price :</p>
-                                                <h5 class="mb-0">$120.40</h5>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                        <div class="col-lg-3 col-sm-6 g-3">
-                                            <div class="p-2 border border-dashed rounded text-center">
-                                                <p class="mb-2 text-uppercase text-muted fs-13">No. of Orders :</p>
-                                                <h5 class="mb-0">2,234</h5>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                        <div class="col-lg-3 col-sm-6 g-3">
-                                            <div class="p-2 border border-dashed rounded text-center">
-                                                <p class="mb-2 text-uppercase text-muted fs-13">Available Stocks :</p>
-                                                <h5 class="mb-0">1,230</h5>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                        <div class="col-lg-3 col-sm-6 g-3">
-                                            <div class="p-2 border border-dashed rounded text-center">
-                                                <p class="mb-2 text-uppercase text-muted fs-13">Total Revenue :</p>
-                                                <h5 class="mb-0">$60,645</h5>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <div class=" mt-4">
-                                                <h5 class="fs-15 mb-3">Colors :</h5>
-                                                <div class="d-flex flex-wrap gap-2">
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="Out of Stock">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-primary" disabled>
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="03 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-secondary">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="03 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-success">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="02 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-info">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="01 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-warning">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="04 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-danger">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="03 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-light">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="04 Items Available">
-                                                        <button type="button" class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-24 text-dark">
-                                                            <i class="ri-checkbox-blank-circle-fill"></i>
-                                                        </button>
-                                                    </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive table-card">
+                                            <table class="table align-middle table-nowrap">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col">Discount</th>
+                                                        <th scope="col">Coupon Title</th>
+                                                        <th scope="col">Code</th>
+                                                        <th scope="col">Product Type</th>
+                                                        <th scope="col">Start Date</th>
+                                                        <th scope="col">End Date</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="list">
+                                                    <tr>
+                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#TB01</a></td>
+                                                        <td class="discount"><h5 class="mb-0 fs-16">$15.9</h5></td>
+                                                        <td class="couponTitle">Winter Gift Voucher</td>
+                                                        <td class="code">WINTER145</td>
+                                                        <td class="productType">Other Accessories</td>
+                                                        <td class="startDate">23 Dec, 2022</td>
+                                                        <td class="endDate">15 Jan, 2023</td>
+                                                        <td class="status"><span class="badge badge-soft-success">Active</span></td>
+                                                        <td>
+                                                            <ul class="hstack gap-2 list-unstyled mb-0">
+                                                                <li>
+                                                                    <a href="#couponDetails" data-bs-toggle="offcanvas" class="badge badge-soft-dark view-item-btn">View</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="badge badge-soft-primary edit-item-btn" href="#showModal" data-bs-toggle="modal">Edit</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#deleteModal" data-bs-toggle="modal" class="badge badge-soft-danger remove-item-btn">Delete</a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                            <div class="noresult" style="display: none">
+                                                <div class="text-center">
+                                                    <lord-icon src="../../../msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>
+                                                    <h5 class="mt-2">Sorry! No Result Found</h5>
+                                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any orders for you search.</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end col -->
-                                        <div class="col-xl-6">
-                                            <div class="mt-4">
-                                                <h5 class="fs-15 mb-3">Sizes :</h5>
-                                                <div class="d-flex flex-wrap gap-2">
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="Out of Stock">
-                                                        <input type="radio" class="btn-check" name="productsize-radio" id="productsize-radio1" disabled>
-                                                        <label class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center" for="productsize-radio1">S</label>
-                                                    </div>
-
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="04 Items Available">
-                                                        <input type="radio" class="btn-check" name="productsize-radio" id="productsize-radio2">
-                                                        <label class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center" for="productsize-radio2">M</label>
-                                                    </div>
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="06 Items Available">
-                                                        <input type="radio" class="btn-check" name="productsize-radio" id="productsize-radio3">
-                                                        <label class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center" for="productsize-radio3">L</label>
-                                                    </div>
-
-                                                    <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="Out of Stock">
-                                                        <input type="radio" class="btn-check" name="productsize-radio" id="productsize-radio4">
-                                                        <label class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center" for="productsize-radio4">XL</label>
-                                                    </div>
-                                                </div>
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <div class="pagination-wrap hstack gap-2">
+                                                <a class="page-item pagination-prev disabled" href="#">
+                                                    <i class="mdi mdi-chevron-left align-middle me-1"></i> Previous</a>
+                                                
+                                                <ul class="pagination listjs-pagination mb-0"></ul>
+                                                <a class="page-item pagination-next" href="#">
+                                                    Next <i class="mdi mdi-chevron-right align-middle ms-1"></i></a>
+                                                
                                             </div>
                                         </div>
-                                        <!-- end col -->
-
-
-                                    </div>
-                                    <!-- end row -->
-
-                                    <div class="mt-4 text-muted">
-                                        <h5 class="fs-15">Description :</h5>
-                                        <p>Long sleeve T-shirts are as the name suggests, <b>T-shirts with their sleeves extended to cover the entire arm up to the wrist</b>. These shirts combine the casual and comfortable feel of a T-shirt with the full covering of a business/dress shirt. I won't say not to wear these colors, but these colors don't compliment your skin tone the best. Wear warm colors.</p>
-                                        <p><b>Whites</b>, <b>pastels</b>, <b>shades of purple</b>, <b>pink</b>, <b>rich yellow</b>, and <b>orange</b> look good with your skin. The colors dark skin men should avoid are black or dark brown.</p>
-                                    </div>
-
-                                    <div class="mt-3 mb-4">
-                                        <h5 class="fs-15 mb-3">Services :</h5>
-
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="avatar-xs">
-                                                        <div class="avatar-title bg-danger-subtle text-danger fs-15 rounded">
-                                                            <i class="bi bi-recycle"></i>
-                                                        </div>
-                                                    </div>
-                                                    <h6 class="mb-0">10 Days Replacement</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="avatar-xs">
-                                                        <div class="avatar-title bg-success-subtle text-success fs-15 rounded">
-                                                            <i class="bi bi-cash-coin"></i>
-                                                        </div>
-                                                    </div>
-                                                    <h6 class="mb-0">Cash on Delivery available</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h5 class="fs-15">Product Details:</h5>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-borderless align-middle description-table">
-                                            <tr>
-                                                <th>Type</th>
-                                                <td>Stripped shirts</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sleeve</th>
-                                                <td>Full Sleeve</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Country of Origin</th>
-                                                <td>India</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Pack of</th>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Style</th>
-                                                <td>Modern</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Style Code</th>
-                                                <td>TBS037</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Generic Name</th>
-                                                <td>Formal Shirt</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Ideal For</th>
-                                                <td>Men</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Size</th>
-                                                <td>All Available</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Suitable For</th>
-                                                <td>Formal Wear,Party Wear</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Seller</th>
-                                                <td>Zibra Fashion</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Fabric</th>
-                                                <td>Cotton</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div>
-                                        <div class="d-flex flex-wrap gap-4 justify-content-between align-items-center mt-4">
-                                            <div class="flex-shrink-0">
-                                                <h5 class="fs-15 mb-3 fw-medium">Total Rating's</h5>
-                                                <h2 class="fw-bold mb-3">10.14k</h2>
-                                                <p class="text-muted mb-0">Growth in reviews on this year</p>
-                                            </div>
-                                            <hr class="vr">
-                                            <div class="flex-shrink-0">
-                                                <h5 class="fs-15 mb-3 fw-medium">Average Rating</h5>
-                                                <h2 class="fw-bold mb-3">5.6 <span class="fs-16 align-middle text-warning ms-2">
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-half-fill"></i>
-                                                    </span></h2>
-                                                <p class="text-muted mb-0">Average rating on this year</p>
-                                            </div>
-                                            <hr class="vr">
-                                            <div class="flex-shrink-0 w-xl">
-                                                <div class="row align-items-center g-3 align-items-center mb-2">
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13"><i class="ri-star-fill text-warning me-1 align-bottom"></i>5</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div>
-                                                            <div class="progress animated-progress progress-sm">
-                                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50.16%" aria-valuenow="50.16" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13">2758</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center g-3 mb-2">
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13"><i class="ri-star-fill text-warning me-1 align-bottom"></i>4</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div>
-                                                            <div class="progress animated-progress progress-sm">
-                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 29.32%" aria-valuenow="29.32" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13">1063</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center g-3 mb-2">
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13"><i class="ri-star-fill text-warning me-1 align-bottom"></i>3</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div>
-                                                            <div class="progress animated-progress progress-sm">
-                                                                <div class="progress-bar bg-info" role="progressbar" style="width: 18.12%" aria-valuenow="18.12" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13">997</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center g-3 mb-2">
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13"><i class="ri-star-fill text-warning me-1 align-bottom"></i>2</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div>
-                                                            <div class="progress animated-progress progress-sm">
-                                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 4.98%" aria-valuenow="4.98" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13">227</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center g-3">
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13"><i class="ri-star-fill text-warning me-1 align-bottom"></i>2</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div>
-                                                            <div class="progress animated-progress progress-sm">
-                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 7.42%" aria-valuenow="7.42" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div>
-                                                            <h6 class="mb-0 text-muted fs-13">408</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4" data-simplebar="init" style="max-height: 350px">
-                                            <div class="simplebar-wrapper" style="margin: 0px;">
-                                                <div class="simplebar-height-auto-observer-wrapper">
-                                                    <div class="simplebar-height-auto-observer"></div>
-                                                </div>
-                                                <div class="simplebar-mask">
-                                                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-                                                        <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
-                                                            <div class="simplebar-content" style="padding: 0px;">
-                                                                <div class="d-flex p-3 border-bottom border-bottom-dashed">
-                                                                    <div class="flex-shrink-0 me-3">
-                                                                        <img class="avatar-xs rounded-circle" src="../../static/assets_admin/images/users/avatar-5.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="flex-grow-1">
-                                                                        <div class="d-flex mb-3">
-                                                                            <div class="flex-grow-1">
-                                                                                <div>
-                                                                                    <div class="mb-2 fs-12">
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-line text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-line text-warning align-bottom"></i></span>
-                                                                                    </div>
-                                                                                    <h6 class="mb-0">Donald Risher</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="flex-shrink-0">
-                                                                                <p class="mb-0 text-muted"><i class="ri-calendar-event-fill me-2 align-middle"></i>Oct 28, 2023</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h5 class="lh-base fs-17">Design Quality</h5>
-                                                                            <p class="mb-0">
-                                                                                " This is an incredible framework worth so much in the right hands! Nowhere else are you going to get so much flexibility and great code for a few dollars. Highly recommend purchasing today! Like right now! "
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="d-flex mt-4">
-                                                                            <div class="flex-shrink-0 me-3">
-                                                                                <img class="avatar-xs rounded-circle" src="../../static/assets_admin/images/users/avatar-1.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="flex-grow-1">
-                                                                                <div class="d-flex mb-3">
-                                                                                    <div class="flex-grow-1">
-                                                                                        <div>
-                                                                                            <h6 class="mb-2">Jansh Brown</h6>
-                                                                                            <p class="mb-0 text-muted fs-14">Admin</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="flex-shrink-0">
-                                                                                        <p class="mb-0 text-muted"><i class="ri-calendar-event-fill me-2 align-middle"></i>Feb 04, 2023</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <p class="mb-0">
-                                                                                    Thank You
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-flex p-3 border-bottom border-bottom-dashed">
-                                                                    <div class="flex-shrink-0 me-3">
-                                                                        <img class="avatar-xs rounded-circle" src="../../static/assets_admin/images/users/avatar-3.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="flex-grow-1">
-                                                                        <div class="d-flex mb-3">
-                                                                            <div class="flex-grow-1">
-                                                                                <div>
-                                                                                    <div class="mb-2 fs-12">
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                    </div>
-                                                                                    <h6 class="mb-0">Richard Smith</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="flex-shrink-0">
-                                                                                <p class="mb-0 text-muted"><i class="ri-calendar-event-fill me-2 align-middle"></i>Dec 10, 2022</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h5 class="lh-base fs-17">Feature Availability</h5>
-                                                                            <p class="mb-0">
-                                                                                " Hello everyone, I would like to suggest here two contents that you could create. Course pages and blog pages. In them you could insert the listing and management of courses and listing and management of blog. The theme is perfect, one of the best purchases I've ever made. "
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-flex p-3">
-                                                                    <div class="flex-shrink-0 me-3">
-                                                                        <img class="avatar-xs rounded-circle" src="../../static/assets_admin/images/users/avatar-8.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="flex-grow-1">
-                                                                        <div class="d-flex mb-3">
-                                                                            <div class="flex-grow-1">
-                                                                                <div>
-                                                                                    <div class="mb-2 fs-12">
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                                                        <span> <i class="ri-star-line text-warning align-bottom"></i></span>
-                                                                                    </div>
-                                                                                    <h6 class="mb-0">Pauline Moll</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="flex-shrink-0">
-                                                                                <p class="mb-0 text-muted"><i class="ri-calendar-event-fill me-2 align-middle"></i>Jan 28, 2023</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h5 class="lh-base fs-17">Design Quality</h5>
-                                                                            <p class="mb-0">
-                                                                                "We have used your other templates as well and seems it's amazing with the design and code quality. Wish you best for the future updates. Keep updated you will be #1 in near future. "
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="d-flex mt-4">
-                                                                            <div class="flex-shrink-0 me-3">
-                                                                                <img class="avatar-xs rounded-circle" src="../../static/assets_admin/images/users/avatar-1.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="flex-grow-1">
-                                                                                <div class="d-flex mb-3">
-                                                                                    <div class="flex-grow-1">
-                                                                                        <div>
-                                                                                            <h6 class="mb-2">Jansh Brown</h6>
-                                                                                            <p class="mb-0 text-muted fs-14">Admin</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="flex-shrink-0">
-                                                                                        <p class="mb-0 text-muted"><i class="ri-calendar-event-fill me-2 align-middle"></i>Aug 16, 2022</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <p class="mb-0">
-                                                                                    Thank You
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="simplebar-placeholder" style="width: auto; height: 719px;"></div>
-                                            </div>
-                                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                                <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
-                                            </div>
-                                            <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-                                                <div class="simplebar-scrollbar" style="height: 170px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
-                                            </div>
-                                        </div>
-                                        <div class="card p-4">
-                                            <h5 class="fs-18 mb-3">Add a Review</h5>
-                                            <div>
-                                                <form action="#" class="form">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <h6 class="fs-14 mb-0">Your rating:</h6>
-                                                        <div class="ms-3">
-                                                            <span class="fs-14"> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                            <span class="fs-14"> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                            <span class="fs-14"> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                            <span class="fs-14"> <i class="ri-star-fill text-warning align-bottom"></i></span>
-                                                            <span class="fs-14"> <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input class="form-control" name="your-name" placeholder="Title" type="text">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <textarea class="form-control" name="your-commemt" placeholder="Enter your comments &amp; reviews" rows="4"></textarea>
-                                                    </div>
-                                                    <div class="text-end">
-                                                        <button class="btn btn-primary btn-hover" type="submit" value="Submit">Send Review <i class="ri-send-plane-2-line align-bottom ms-1"></i></button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-                    </div><!-- container-fluid -->
+                                    </div><!--end card-body-->
+                                </div><!--end card-->
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div>
+                    </div>
+                    <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
 
@@ -1589,6 +1080,164 @@
         </div>
         <!-- END layout-wrapper -->
 
+        <!-- createModal -->
+        <div id="showModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0">
+                    <div class="modal-header px-4 pt-4">
+                        <h5 class="modal-title fs-18" id="exampleModalLabel">Add Coupons</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form class="tablelist-form" novalidate="" autocomplete="off">
+                            <div class="row">
+                                <div id="alert-error-msg" class="d-none alert alert-danger py-2"></div>
+                                <input type="hidden" id="id-field">                                
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label for="couponTitle" class="form-label">Coupon Title</label>
+                                        <input type="text" class="form-control" id="couponTitle-field" placeholder="Coupon title" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="couponCode" class="form-label">Code</label>
+                                        <input type="text" class="form-control" id="code-field" placeholder="Enter coupon code" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="ProductSelect" class="form-label">Product Type</label>
+                                        <select class="form-control" name="categorySelect" id="productType-field">
+                                            <option value="">Select Product</option>
+                                            <option value="Headphone">Headphone</option>
+                                            <option value="Watch">Watch</option>
+                                            <option value="Furniture">Furniture</option>
+                                            <option value="Clothing">Clothing</option>
+                                            <option value="Footwear">Footwear</option>
+                                            <option value="Lighting">Lighting</option>
+                                            <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                                            <option value="Books">Books</option>
+                                            <option value="Other Accessories">Other Accessories</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="startDate" class="form-label">Start Date</label>
+                                        <input type="text" class="form-control" id="startdate-field" data-provider="flatpickr" data-date-format="d M, Y" placeholder="Select date" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="endDate" class="form-label">END Date</label>
+                                        <input type="text" class="form-control" id="enddate-field" data-provider="flatpickr" data-date-format="d M, Y" placeholder="Select date" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="amountPercentage" class="form-label">Amount/Percentage</label>
+                                        <input type="text" class="form-control" id="discount-field" placeholder="Enter amount/percentage" required="">
+                                    </div>
+                                </div>                               
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="statusSelect" class="form-label">Status</label>
+                                        <select class="form-control" name="choices-single-default" id="status-Field">
+                                            <option value="">Status</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Expired">Expired</option>                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 modal-footer">
+                                    <div class="hstack gap-2 justify-content-end">
+                                        <button type="button" class="btn btn-ghost-danger" data-bs-dismiss="modal"><i class="ri-close-line align-bottom me-1"></i> Close</button>
+                                        <button type="submit" class="btn btn-primary" id="add-btn">Add Coupons</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+        
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="couponDetails" aria-labelledby="couponDetailsLabel">
+            <div class="offcanvas-header bg-warning-subtle">
+                <h5 class="offcanvas-title" id="couponDetailsLabel">Great Festival Sale</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <img src="../../static/assets_admin/images/ecommerce/offer-banner.jpg" alt="" class="img-thumbnail">
+                </div>
+                <div class="mt-3">
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><span class="text-muted">Use Code</span></td>
+                                <td><span class="fw-medium">FESTIVAL15</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Discount</span></td>
+                                <td><span class="fw-medium text-uppercase">15% up to</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Start Date</span></td>
+                                <td><span class="fw-medium">09 Dec, 2022</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">END Date</span></td>
+                                <td><span class="fw-medium">21 Dec, 2022</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Product Type</span></td>
+                                <td><span class="fw-medium">Footwear, Watch</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Status</span></td>
+                                <td><span class="badge badge-soft-success">Active</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="offcanvas-header border-top">
+                <div class="hstack gap-3 w-100">
+                    <button type="button" class="btn btn-danger w-100"><i class="ri-delete-bin-line me-1 align-bottom"></i> Delete</button>
+                    <button type="button" class="btn btn-secondary w-100"><i class="ri-pencil-line me-1 align-bottom"></i> Edit</button>
+                </div>
+            </div>
+        </div><!--end offcanvas-->
+
+
+        <!-- deleteModal -->
+        <div id="deleteModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-md-5">
+                        <div class="text-center">
+                            <div class="text-danger">
+                                <i class="bi bi-trash display-4"></i>
+                            </div>
+                            <div class="mt-4 fs-15">
+                                <h4 class="mb-1">Are you sure ?</h4>
+                                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this coupons ?</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light btn-hover" id="deleteRecord-close" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn w-sm btn-danger btn-hover" id="delete-record">Yes, Delete It!</button>
+                        </div>
+                    </div>
+                </div><!--end modal-content -->
+            </div><!--end modal-dialog -->
+        </div><!-- end modal -->
 
 
         <!--start back-to-top-->
@@ -1606,7 +1255,7 @@
                 </div>
                 <div class="card-body p-0">
                     <div id="users-chat-widget">
-                        <div class="chat-conversation p-3" id="chat-conversation" data-simplebar style="height: 280px;">
+                        <div class="chat-conversation p-3" id="chat-conversation" data-simplebar="" style="height: 280px;">
                             <ul class="list-unstyled chat-conversation-list chat-sm" id="users-conversation">
                                 <li class="chat-list left">
                                     <div class="conversation-list">
@@ -1728,7 +1377,7 @@
                 <button type="button" class="btn-close btn-close-white ms-auto" id="customizerclose-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body p-0">
-                <div data-simplebar class="h-100">
+                <div data-simplebar="" class="h-100">
                     <div class="p-4">
 
                         <!-- <h6 class="mb-1 fs-15 fw-semibold text-uppercase">View Website</h6>
@@ -2738,15 +2387,17 @@
         <script src="../../static/assets_admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../../static/assets_admin/libs/simplebar/simplebar.min.js"></script>
         <script src="../../static/assets_admin/js/plugins.js"></script>
+        <!-- list.js min js -->
+        <script src="../../static/assets_admin/libs/list.js/list.min.js"></script>
+        <script src="../../static/assets_admin/libs/list.pagination.js/list.pagination.min.js"></script>
 
-        <!--Swiper slider js-->
-        <script src="../../static/assets_admin/libs/swiper/swiper-bundle.min.js"></script>
+        <script src="../../static/assets_admin/libs/sweetalert2/sweetalert2.min.js"></script>
 
-        <script src="../../static/assets_admin/js/backend/product-details.init.js"></script>
+        <!-- App js -->
+        <script src="../../static/assets_admin/js/backend/coupons.init.js"></script>
 
-        <!--App js-->
+        <!-- App js -->
         <script src="../../static/assets_admin/js/app.js"></script>
-
     </body>
 
 </html>

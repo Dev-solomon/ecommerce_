@@ -167,13 +167,29 @@ def products_admin():
 @token_required
 @check_ifadmin
 def orders_made():
-    return render_template('/admin/orders-list-view.html')
-# This is the route for Checking Orders Overview
-@app.route('/admin/orders-overview')
+    return render_template('/admin/orders-list-view.html') 
+# This is the route for knowing how many users are active or not annd in total in the platform
+@app.route('/admin/users')
 @token_required
 @check_ifadmin
-def orders_overview():
-    return render_template('/admin/orders-overview.html')
+def users():
+    return render_template('/admin/users-list.html')
+#This is the route for all TRANSACTIONS
+@app.route('/admin/transactions') 
+def transactions():
+    return render_template('/admin/transactions.html')
+# This is the reviews page Customers/Users have written
+@app.route('/admin/reviews')
+@token_required
+@check_ifadmin
+def reviews():
+    return render_template('/admin/reviews-ratings.html')
+# This is the route for the shipments of a product 
+@app.route('/admin/shipments')
+@token_required
+@check_ifadmin
+def shipments():
+    return render_template('/admin/shipments.html')
 
 
 

@@ -21,7 +21,6 @@ def token_required(f):
       return  render_template('login.html', message="Session Expired! Login")
     
     return f(*args, **kwargs)  
-  
   return decorated 
 # ------------------------------------
 # Function for setting cookies 
@@ -78,5 +77,4 @@ def check_ifadmin(f):
         return render_template('admin/auth-404.html', message="ACCESS DENIED!")
     
     return f(*args, **kwargs)  
-  
   return decorated 
