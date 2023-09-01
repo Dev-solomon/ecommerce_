@@ -1,5 +1,4 @@
 /.venv
-
 # install virtual environment by the following:
 # python3 -m virtualenv .venv
 # enter the virtual env with :: source .venv/Scripts/activate

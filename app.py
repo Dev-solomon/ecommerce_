@@ -4,7 +4,7 @@ from funcs import *
 import jwt
 import datetime 
 import os
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 app = Flask(__name__)  # '__main__' 
 CORS(app, support_credentials=True)
