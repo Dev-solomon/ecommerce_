@@ -94,7 +94,8 @@ def orderView_template():
 # This is the complete list of all the items in the catalog of the website
 @app.route('/catalog')
 def catalog_template():
-    return render_template('shop-horizontal-filter.html')
+    products = get_products()
+    return render_template('shop-horizontal-filter.html', products=products)
 # The signup page for anyone that wants to become a vendor
 # @app.route('/vendors-sign')
 # def vendorSign_template():
@@ -124,6 +125,27 @@ def account_password():
 @app.route('/logout')
 def logout_user():
     return del_cookies()
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
       
       

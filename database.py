@@ -131,7 +131,7 @@ def get_products():
       
     products = get_products.fetchall()
      
-    print(products)
+    # print(products)
     
     return products 
 # ------------------------------------------
@@ -162,4 +162,5 @@ def customers_total():
     customers_Total = customers.fetchone()[0] 
     print(customers_Total)
     return customers_Total
+
    
