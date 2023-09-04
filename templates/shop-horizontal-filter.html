@@ -1123,11 +1123,8 @@
                             <div class="product-wrap">
                                 <div class="product text-center">
                                     <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <script>
-                                                image = 
-                                            </script>
-                                            <img src=`../upload/{{ product.image }}` alt="Product" width="300" height="338">
+                                        <a href="product/{{product.id}}"> 
+                                            <img src="../static/upload/{{product.image}}" width="300" height="338">
                                         </a>
                                         <div class="product-action-horizontal">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1138,21 +1135,21 @@
                                     </figure>
                                     <div class="product-details">
                                         <div class="product-cat">
-                                            <a href="shop-banner-sidebar.html">{{product.category}}</a>
+                                            <a>{{product.category}}</a>
                                         </div>
                                         <h3 class="product-name">
-                                            <a href="product-default.html">{{product.title}}</a>
+                                            <a>{{product.title}}</a>
                                         </h3>
                                         <div class="ratings-container">
                                             <div class="ratings-full">
                                                 <span class="ratings" style="width: 100%;"></span>
                                                 <span class="tooltiptext tooltip-top"></span>
                                             </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
+                                            <a class="rating-reviews">(3 reviews)</a>
                                         </div>
                                         <div class="product-pa-wrapper">
-                                            <div class="product-price">
-                                                ${{product.price}}
+                                            <div class="product-price" style="padding-right: 20px;padding-left: 20px;">
+                                               ${{product.price}}
                                             </div>
                                         </div>
                                     </div>

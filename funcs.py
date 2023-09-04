@@ -58,7 +58,7 @@ def user_account():
 def upload_image():
   image = request.files['image']
   if image.filename != '':
-      image.save(os.path.join('upload', secure_filename(image.filename)))
+      image.save(os.path.join('static/upload', secure_filename(image.filename)))
       return image.filename
   return print('didn work')
 # -----------------------------------------------

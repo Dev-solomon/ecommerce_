@@ -4,9 +4,11 @@ from funcs import *
 import jwt
 import datetime 
 import os
-from flask_cors import CORS
+from flask_cors import CORS 
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)  # '__main__' 
+Bcrypt(app)
 CORS(app, support_credentials=True)
 
 
@@ -101,9 +103,15 @@ def catalog_template():
 # def vendorSign_template():
 #     return render_template('become-a-vendor.html')
 # The ovverview of a particular product
-@app.route('/product')
-def product_template():
-    return render_template('product-variable.html')
+@app.route('/product/<int:id>')
+def product_template(id):  
+    product = get_product(id)  
+    # Length of products for More-products to display three
+    products = more_products() 
+    # -----------------------------------------------------
+    print(products)
+    similar_products = product_by_category(get_product(id).category)  
+    return render_template('product-variable.html', pid=id, product=product, more_products=products, related_products=similar_products)
 # a single vendor overview
 # @app.route('/vendor')
 # def vendor_template():

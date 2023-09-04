@@ -80,23 +80,23 @@ def create_new_product(data):
     #  Check if stock field is empty
     if data['stock'] == '':
       stock = 0
-    else: 
-      stock = int(data['stock'])
+    else:
+      stock = float(data['stock'])  
     # Check if price field is empty
     if data['price'] == '':
       price= 0
     else: 
-      price = int(data['price'])
+      price = float(data['price']) 
     # Check if discount field is empty 
     if data['discount'] == '':
       discount = 0
     else: 
-      discount= int(data['discount'])
+      discount= float(data['discount'])
     # Check if orders field is empty 
     if data['orders'] == '':
       orders = 0
     else: 
-      orders= int(data['orders'])
+      orders= float(data['orders']) 
     # RUN DATABASE QUERY
     result = conn.execute(query, 
                 dict(title = data['title'],
@@ -162,5 +162,36 @@ def customers_total():
     customers_Total = customers.fetchone()[0] 
     print(customers_Total)
     return customers_Total
-
-   
+# ------------------------------------------
+# A single Product
+# ------------------------------------------
+def get_product(product_id):
+  with engine.connect() as conn:
+    query = text("SELECT * FROM products WHERE id=:pid") 
+    product = conn.execute(query,dict(pid=product_id)).fetchone()
+    if len(product) == 0:
+      return None
+    else: 
+      return product 
+# ------------------------------------------
+# Product by Category
+# ------------------------------------------ 
+def product_by_category(category):
+  with engine.connect() as conn:
+    query = text("SELECT * FROM products WHERE category=:cat ORDER BY id DESC")
+    similar_products = conn.execute(query,dict(cat=category)).all()
+    if len(similar_products) == 0:
+      return None
+    else:
+      return similar_products
+# ---------------------------------------
+# More Products
+# ------------------------------------------ 
+def more_products():
+  with engine.connect() as conn:
+    query = text("SELECT * FROM products ORDER BY RAND() LIMIT 3")
+    more_products = conn.execute(query).all()
+    if len(more_products) == 0:
+      return None
+    else:
+      return more_products
