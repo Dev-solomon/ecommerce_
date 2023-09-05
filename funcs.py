@@ -2,6 +2,7 @@ from flask import *
 import jwt
 from functools import wraps
 import os  
+# from termcolor import colored
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage 
 # -----------------------------------------------
@@ -78,3 +79,14 @@ def check_ifadmin(f):
     
     return f(*args, **kwargs)  
   return decorated 
+# -----------------------------------------------
+# Reviews On Star Rating
+# -----------------------------------------------
+def review(data):
+  review = dict(data)
+  
+  if review['rating'] == '' or review['rating-text'] == '' or review['rating-name'] == '' or review['rating-email'] == '':
+    return 'Error'  
+  return review
+  
+  

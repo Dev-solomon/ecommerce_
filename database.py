@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine, text   
 from flask import *
 from datetime import date
-from funcs import upload_image
+from funcs import *
+from termcolor import colored
 
 # ----------------------------------------------------------
 # Connection string For Cloud connection to Database
@@ -195,3 +196,26 @@ def more_products():
       return None
     else:
       return more_products
+# ---------------------------------------
+# Users Reviews
+# ------------------------------------------ 
+def user_reviews(p_id, review):
+  with engine.connect() as conn:
+    query = text("INSERT INTO reviews(p_id, rating, ratingtext, ratingname, ratingemail, date) VALUES(:pid, :rating, :ratingtext, :ratingname, :ratingemail, :date)")
+    
+    result = conn.execute(query, dict(pid=p_id, rating=int(review['rating']), ratingtext=review['rating-text'], ratingname=review['rating-name'], ratingemail=review['rating-email'], date=date.today()))
+    
+    if result.rowcount == 0:
+      return False
+    return True
+# ---------------------------------------
+# Get user Reviews by product(id)
+# ------------------------------------------ 
+def get_product_review(product_id):
+  with engine.connect() as conn:
+    query = text("SELECT * FROM reviews WHERE p_id=:id ORDER BY DATE DESC LIMIT 3")
+    
+    reviews = conn.execute(query, dict(id=product_id)).all()
+    if len(reviews) == 0:
+      return ''
+    return  reviews

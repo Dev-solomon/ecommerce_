@@ -6,6 +6,7 @@ import datetime
 import os
 from flask_cors import CORS 
 from flask_bcrypt import Bcrypt
+from termcolor import colored
 
 app = Flask(__name__)  # '__main__' 
 Bcrypt(app)
@@ -103,15 +104,26 @@ def catalog_template():
 # def vendorSign_template():
 #     return render_template('become-a-vendor.html')
 # The ovverview of a particular product
-@app.route('/product/<int:id>')
+@app.route('/product/<int:id>', methods=['POST','GET'])
 def product_template(id):  
+    if request.method == 'POST':
+        product = get_product(id)
+        products = more_products()
+        similar_products = product_by_category(get_product(id).category) 
+        product_review = get_product_review(id)  
+        data = request.form 
+        if review(data) == 'Error': 
+            return render_template('product-variable.html', pid=id,product=product, more_products=products, related_products=similar_products, message="Fill In All The Review Feilds!",reviews=product_review)
+        else:  
+            user_reviews(id,review(data))
+            return render_template('product-variable.html', pid=id,product=product, more_products=products, related_products=similar_products, message="Your review Has Been Sent.",reviews=product_review)
     product = get_product(id)  
     # Length of products for More-products to display three
     products = more_products() 
-    # -----------------------------------------------------
-    print(products)
-    similar_products = product_by_category(get_product(id).category)  
-    return render_template('product-variable.html', pid=id, product=product, more_products=products, related_products=similar_products)
+    # ----------------------------------------------------- 
+    similar_products = product_by_category(get_product(id).category) 
+    product_review = get_product_review(id) 
+    return render_template('product-variable.html', pid=id, product=product, more_products=products, related_products=similar_products, reviews=product_review)
 # a single vendor overview
 # @app.route('/vendor')
 # def vendor_template():
